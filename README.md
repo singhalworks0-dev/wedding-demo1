@@ -30,3 +30,7 @@ Wish lantern artwork: assets/wish-lantern.png. Generated with the built-in image
 Destination: destination.css/destination.js compose the real photograph across the full scene with generated photorealistic emerald velvet curtains. The reveal replays on entry and through the Replay reveal control. Asset sources and the curtain prompt are in DESTINATION-ASSETS.md.
 
 The latest Gifts scene features one large 3D-floating lantern. Tap to ignite it: the scene fills with warm light and particles, then reveals a short gift message. ignite.js and ignite.css implement the lighting experience. Local QA scripts and screenshots are intentionally excluded from the repository.
+
+## Vercel deployment
+
+The Git repository contains Royal Garden at its root. Use Root Directory `.`. vercel.json explicitly selects the Other framework preset, runs `npm run build`, and serves `dist/` as a static site. The build copies only the invitation HTML, its referenced scripts/styles and artwork. The local server.mjs is not a deployed function.
