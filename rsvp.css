@@ -1,0 +1,23 @@
+#rsvp.rsvp{background:radial-gradient(ellipse at 50% 20%,#f4f4e8,#eeefdf)}
+#rsvp .scene-content{max-width:470px;width:calc(100vw - 48px);padding:20px 0}
+#rsvp .rsvp-inner{padding:20px 8px;border:0;box-shadow:none;background:transparent}
+#rsvp .lotus{width:45px;height:35px;margin-bottom:21px}
+#rsvp h2{font-size:3.4rem;margin-bottom:14px}
+#rsvp .rsvp-inner>p{font-family:var(--serif);font-size:1.15rem;line-height:1.5;margin-bottom:28px;color:#7d856c}
+#rsvp form{margin:0;text-align:left}
+#rsvp label,#rsvp legend{font-size:.875rem;color:#3f5340}
+#rsvp input:not([type=radio]),#rsvp select{min-height:52px;font-size:16px;padding:12px 14px;background:#faf9f1b3;border:1px solid #c2cab0;border-radius:5px;margin-top:8px}
+#rsvp fieldset{margin:24px 0 0}
+#rsvp legend{margin-bottom:11px}
+.attendance-options{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+#rsvp .radio-choice{display:flex;align-items:center;justify-content:center;gap:7px;min-height:55px;margin:0;padding:12px 8px;border:1px solid #bdc8aa;border-radius:5px;background:#f9f9ee80;font-size:.8125rem;cursor:pointer;transition:background .25s,border-color .25s}
+#rsvp .radio-choice:has(input:checked){background:#dce5cc;border-color:#788f62;color:#263d2b}
+#rsvp .radio-choice input{width:16px;height:16px;margin:0;flex-shrink:0}
+#rsvp .guest-label{display:block;margin-top:20px}
+#rsvp .guest-label[hidden]{display:none}
+#rsvp .primary-button{width:100%;min-height:53px;border-radius:5px;margin-top:26px;font-size:.9375rem;gap:15px}
+#rsvp .form-note{font-size:.6875rem!important;color:#8c927e;margin-top:14px;line-height:1.5}
+#rsvp #rsvp-status{font-size:.875rem;line-height:1.6;margin-top:13px}
+#rsvp .rsvp-fold-cover{border-radius:5px}
+@media(max-width:700px){#rsvp h2{font-size:3rem}#rsvp .rsvp-inner{padding:15px 4px}#rsvp .rsvp-inner>p{font-size:1.1rem;margin-bottom:27px}#rsvp .lotus{margin-bottom:20px}}
+@media(max-width:359px){#rsvp .scene-content{width:calc(100vw - 36px)}#rsvp h2{font-size:2.65rem}#rsvp .radio-choice{font-size:.75rem;padding-inline:5px}.attendance-options{gap:8px}}

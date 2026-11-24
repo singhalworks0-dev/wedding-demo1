@@ -1,0 +1,34 @@
+/* Native 3D transforms, spring-like tilt and a perspective particle renderer. */
+(()=>{
+const media=matchMedia('(prefers-reduced-motion: reduce)');
+const scenes=[...document.querySelectorAll('.invitation-scene')];
+let entrance=[],covers=[],active=document.querySelector('.current-scene');
+function clean(){entrance.forEach(a=>a.cancel());entrance=[];covers.forEach(el=>el.remove());covers=[];scenes.forEach(s=>{const inner=s.querySelector('.scene-content');inner.style.removeProperty('--tilt-x');inner.style.removeProperty('--tilt-y');});}
+function play(el,frames,delay=0,duration=1000){if(!el)return;const a=el.animate(frames,{duration,delay,easing:'cubic-bezier(.16,.8,.22,1)',fill:'backwards'});entrance.push(a);}
+function revealItems(scene,selector,base=180){scene.querySelectorAll(selector).forEach((el,i)=>play(el,[{opacity:0,transform:'perspective(900px) translate3d(0,25px,-55px) rotateX(-16deg)'},{opacity:1,transform:'perspective(900px) translate3d(0,0,0) rotateX(0deg)'}],base+i*110,950));}
+function doors(scene){const inner=scene.querySelector('.scene-content');for(const side of ['left','right']){const panel=document.createElement('div');panel.className=`opening-panel opening-panel-${side}`;panel.setAttribute('aria-hidden','true');inner.append(panel);covers.push(panel);const a=panel.animate([{transform:'rotateY(0deg)',opacity:1},{transform:`rotateY(${side==='left'?-110:110}deg)`,opacity:0}],{duration:1550,delay:100,easing:'cubic-bezier(.23,.7,.23,1)',fill:'forwards'});entrance.push(a);a.onfinish=()=>panel.remove();}}
+function openScene(scene){clean();active=scene;if(!scene||media.matches)return;
+const id=scene.id;
+if(id==='home'){revealItems(scene,'.hero-top .eyebrow,.intro,h1,.hero-subtitle,.date-line',100);play(scene.querySelector('.garden-scene'),[{opacity:0,transform:'perspective(1200px) translateZ(-130px) rotateX(7deg)'},{opacity:1,transform:'perspective(1200px) translateZ(0) rotateX(0deg)'}],350,1500);}
+if(id==='story'){doors(scene);revealItems(scene,'.chapter-mark,.story-copy h2,.story-copy p,.signature,.tiny-note',500);}
+if(id==='celebrations'){revealItems(scene,'.lotus,h2',80);scene.querySelectorAll('.schedule-list article').forEach((el,i)=>{el.style.transformOrigin='top center';play(el,[{opacity:0,transform:'perspective(900px) rotateX(-75deg) translateZ(-40px)'},{opacity:1,transform:'perspective(900px) rotateX(0deg) translateZ(0)'}],250+i*220,1100);});}
+if(id==='dress-code'){play(scene.querySelector('.outfit-stage'),[{opacity:0,transform:'perspective(1000px) rotateY(-48deg) translateZ(-100px)'},{opacity:1,transform:'perspective(1000px) rotateY(0deg) translateZ(0)'}],150,1350);revealItems(scene,'h2,.outfit-tabs,.outfit-copy,.look-note',100);}
+if(id==='details'){revealItems(scene,'.travel-copy h3,.travel-copy>p,.outline-button,.travel-notes',1250);}
+if(id==='rsvp'){const card=scene.querySelector('.rsvp-inner');const cover=document.createElement('div');cover.className='rsvp-fold-cover';cover.setAttribute('aria-hidden','true');cover.innerHTML='<span>A little reply…</span><span>WOULD MEAN THE WORLD</span>';card.append(cover);covers.push(cover);const a=cover.animate([{transform:'perspective(1000px) rotateX(0deg)',opacity:1},{transform:'perspective(1000px) rotateX(105deg)',opacity:0}],{duration:1400,delay:150,easing:'cubic-bezier(.23,.7,.23,1)',fill:'forwards'});entrance.push(a);a.onfinish=()=>cover.remove();revealItems(scene,'.rsvp-inner h2,#rsvp-form',450);}
+}
+window.addEventListener('invitation:scene',e=>openScene(document.getElementById(e.detail.id)));
+// The opening letter finishes before the first scene's choreography begins.
+const letter=document.querySelector('#envelope');let wasOpen=false;
+new MutationObserver(()=>{const open=letter.classList.contains('opened');if(open&&!wasOpen)openScene(document.querySelector('.current-scene'));wasOpen=open;}).observe(letter,{attributes:true,attributeFilter:['class']});
+function tilt(e){if(media.matches||!active||e.target.closest('input,select,textarea,button,a'))return;const rect=active.getBoundingClientRect();const x=(e.clientX-rect.left)/rect.width-.5,y=(e.clientY-rect.top)/rect.height-.5;const inner=active.querySelector('.scene-content');inner.style.setProperty('--tilt-x',`${-y*4}deg`);inner.style.setProperty('--tilt-y',`${x*5}deg`);}
+document.querySelector('main').addEventListener('pointermove',tilt,{passive:true});document.querySelector('main').addEventListener('pointerleave',()=>{if(active){active.querySelector('.scene-content').style.setProperty('--tilt-x','0deg');active.querySelector('.scene-content').style.setProperty('--tilt-y','0deg');}});
+document.querySelectorAll('[data-look]').forEach(tab=>tab.addEventListener('click',()=>{if(media.matches)return;play(document.querySelector('.outfit-stage'),[{transform:'perspective(900px) rotateY(-20deg) scale(.96)',opacity:.5},{transform:'perspective(900px) rotateY(6deg) scale(1.02)',opacity:1,offset:.7},{transform:'perspective(900px) rotateY(0deg) scale(1)',opacity:1}],0,950);}));
+// Project a small cloud of 3D points onto a 2D canvas: actual z-depth,
+// camera perspective, rotation and depth-dependent opacity, without a library.
+const canvas=document.createElement('canvas');canvas.id='depth-atmosphere';canvas.setAttribute('aria-hidden','true');document.body.append(canvas);const ctx=canvas.getContext('2d');let w=1,h=1,raf=0,last=0,time=0;
+const points=Array.from({length:32},()=>({x:(Math.random()-.5)*1000,y:(Math.random()-.5)*1100,z:Math.random()*950,size:1+Math.random()*2,speed:4+Math.random()*8,phase:Math.random()*6}));
+function resize(){const r=canvas.getBoundingClientRect();w=r.width;h=r.height;const dpr=Math.min(devicePixelRatio||1,1.5);canvas.width=w*dpr;canvas.height=h*dpr;ctx.setTransform(dpr,0,0,dpr,0,0);}new ResizeObserver(resize).observe(canvas);resize();
+function frame(t){raf=0;if(media.matches||document.hidden)return;if(t-last<32){raf=requestAnimationFrame(frame);return;}const dt=Math.min((t-last)/1000,.06);last=t;time+=dt;ctx.clearRect(0,0,w,h);const angle=Math.sin(time*.12)*.16;const sin=Math.sin(angle),cos=Math.cos(angle);
+for(const p of points){p.y-=p.speed*dt;if(p.y< -600)p.y=600;const x=p.x*cos-p.z*sin,z=p.x*sin+p.z*cos;const perspective=650/(650+z+250);const sx=w/2+x*perspective,sy=h/2+p.y*perspective;ctx.globalAlpha=Math.max(.08,perspective*.65)*(.6+.4*Math.sin(time+p.phase)**2);ctx.fillStyle='#c9aa64';ctx.beginPath();ctx.arc(sx,sy,p.size*perspective,0,Math.PI*2);ctx.fill();}ctx.globalAlpha=1;raf=requestAnimationFrame(frame);}
+function run(){if(!raf&&!media.matches&&!document.hidden){last=performance.now();raf=requestAnimationFrame(frame);}}run();document.addEventListener('visibilitychange',()=>{if(document.hidden){cancelAnimationFrame(raf);raf=0;}else run();});media.addEventListener('change',()=>{clean();if(media.matches){cancelAnimationFrame(raf);raf=0;ctx.clearRect(0,0,w,h);}else run();});
+})();

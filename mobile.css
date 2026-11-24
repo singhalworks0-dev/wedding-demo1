@@ -1,0 +1,105 @@
+/* Phone-first composition and thumb-friendly navigation. */
+.mobile-nav{display:none}
+@media(max-width:700px){
+  html{scroll-padding-top:86px}
+  body{padding-bottom:calc(76px + env(safe-area-inset-bottom))}
+  header{height:70px;padding-inline:24px;position:sticky;top:0;backdrop-filter:blur(14px)}
+  header .monogram{min-width:52px;min-height:48px;display:flex;align-items:center}
+  .nav-rsvp{font-size:.875rem;min-height:48px;display:flex;align-items:center}
+  .hero-top{padding:32px 24px 0}
+  .hero .eyebrow{font-size:.75rem;line-height:1.8;letter-spacing:.12em;max-width:290px}
+  .small-ornament{margin:12px 0 6px;font-size:1.1rem}
+  .intro{font-size:1.25rem;margin-bottom:12px}
+  .hero h1{font-size:clamp(4rem,18vw,5.5rem);line-height:.9;letter-spacing:-.035em;display:grid;justify-content:center;gap:3px;margin-bottom:18px}
+  .hero h1 i{font-size:2rem;line-height:1;padding:0;margin:2px 0}
+  .hero-subtitle{font-size:1.25rem;margin-bottom:20px}
+  .date-line{flex-wrap:wrap;gap:5px 12px;max-width:330px;margin:auto;font-size:.875rem;letter-spacing:.055em;line-height:1.8}
+  .date-line span:last-child{flex-basis:100%}
+  .date-line b{display:none}
+  .hero .primary-button{width:min(100%,300px);margin-top:22px;min-height:52px;font-size:.9375rem}
+  .hero-art{height:clamp(270px,78vw,370px);margin-top:-12px;background-size:auto 112%;background-position:50% 77%}
+  .hero-foot{padding:8px 20px 18px;font-size:.75rem;letter-spacing:.1em}
+  .hero-foot a{min-height:44px}
+  .section-pad{padding:64px 24px}
+  .eyebrow,.rsvp .eyebrow{font-size:.75rem;letter-spacing:.13em;line-height:1.8}
+  h2,.story h2,.rsvp h2,.venue-copy h2{font-size:clamp(2.65rem,11vw,3.3rem);line-height:1.08}
+  .story p,.section-heading p,.event-copy p,.venue-copy p,.rsvp p,details p{font-size:1rem;line-height:1.85}
+  .story .botanical{width:75px;opacity:.13}
+  .tiny-note{font-size:.75rem;letter-spacing:.09em}
+  .section-heading{margin-bottom:32px}
+  .section-heading h2{max-width:340px;margin-inline:auto}
+  .event-grid{gap:28px;max-width:430px}
+  .event-art{height:185px;margin:12px 12px 0}
+  .event-copy{padding:24px 22px 28px}
+  .event-copy .eyebrow{font-size:.75rem;letter-spacing:.075em}
+  .event-copy h3{font-size:2.1rem;line-height:1.13}
+  .event-meta{font-size:.875rem;line-height:1.8;letter-spacing:.015em}
+  .event-meta span{padding:0 4px}
+  .dress-code{font-size:1.125rem;line-height:1.6}
+  .countdown-section{padding:58px 20px}
+  .countdown-section h2{font-size:2.8rem}
+  .countdown{gap:6px;justify-content:space-between;max-width:370px;margin:auto}
+  .countdown div{min-width:0;flex:1}
+  .countdown b{font-size:clamp(2.5rem,11vw,3.4rem)}
+  .countdown span{font-size:.6875rem;letter-spacing:.06em}
+  .text-button{min-height:48px;font-size:.8125rem;letter-spacing:.09em}
+  .details{gap:42px}
+  .venue-art{height:380px;width:calc(100% - 16px);max-width:360px}
+  .venue-caption{font-size:.75rem;padding:0 15px;line-height:1.6;letter-spacing:.08em}
+  .venue-copy dt{font-size:.875rem}
+  .outline-button{min-height:52px;font-size:.9375rem;width:min(100%,300px)}
+  .venue-copy .demo-note{font-size:.8125rem;line-height:1.7}
+  form{margin-top:30px}
+  .field-row{gap:20px}
+  form label,legend{font-size:.875rem}
+  input:not([type=radio]),select{font-size:1rem;min-height:54px;padding:13px 14px;margin-top:8px}
+  fieldset{margin:24px 0}
+  .radio-choice{display:flex;font-size:.9375rem;min-height:52px;border:1px solid #c9ccb8;background:#f8f7ed;padding:10px 13px;margin:10px 0 0;gap:12px}
+  .radio-choice:has(input:checked){border-color:var(--ink);background:#dfe7d4}
+  input[type=radio]{width:20px;height:20px;margin:0;flex-shrink:0}
+  form .primary-button{width:100%;font-size:1rem;min-height:54px}
+  .form-note{font-size:.8125rem!important;line-height:1.7}
+  #rsvp-status{font-size:.9375rem}
+  summary{font-size:1.45rem;min-height:48px;align-items:center;line-height:1.4}
+  details{padding:12px 0}
+  details p{margin-right:0}
+  footer{padding:48px 24px 0}
+  footer h2{font-size:2.6rem}
+  .footer-bottom{font-size:.6875rem;letter-spacing:.08em;padding-bottom:26px}
+  .mobile-nav{position:fixed;bottom:0;left:0;right:0;z-index:20;display:grid;grid-template-columns:1fr 1fr 1fr 1.1fr;gap:2px;padding:10px 12px calc(10px + env(safe-area-inset-bottom));border-top:1px solid #cbd0bb;background:#f8f5edf5;backdrop-filter:blur(16px);box-shadow:0 -5px 22px #283e3208}
+  .mobile-nav a{display:flex;justify-content:center;align-items:center;min-height:46px;font-size:.8125rem;letter-spacing:.01em;border-radius:3px}
+  .mobile-nav a:last-child{background:var(--ink);color:var(--paper);gap:7px}
+  .mobile-nav a:last-child span{color:#d6c38e}
+  body:has(.envelope-screen:not(.opened)) .mobile-nav{visibility:hidden}
+  .sound-toggle{bottom:calc(83px + env(safe-area-inset-bottom));right:14px;min-height:44px;min-width:44px;padding:8px 12px;background:#f8f5ed}
+  .sound-toggle span{display:none}
+  .envelope-screen{padding:24px;overflow-y:auto;min-height:100svh}
+  .envelope-content{padding-block:20px;width:100%;max-width:390px}
+  .envelope-content>.eyebrow{font-size:.75rem;line-height:1.8;max-width:260px;margin:auto;letter-spacing:.12em}
+  .envelope-paper{width:100%;height:auto;aspect-ratio:1.55;margin:30px auto}
+  .envelope-flower{height:145px;width:85px;left:8px}
+  .envelope-address{font-size:1rem;padding:0 12px;bottom:18px}
+  .envelope-content h1{font-size:3.25rem;margin-bottom:16px}
+  .envelope-content p{font-size:1.25rem;line-height:1.6}
+  .envelope-content .text-button{font-size:.8125rem;margin-top:8px}
+  .skip-button{font-size:.875rem;min-height:44px;margin-top:12px}
+}
+@media(max-width:359px){
+  .section-pad{padding-inline:20px}
+  .hero-top{padding-inline:20px}
+  .hero .eyebrow{font-size:.6875rem}
+  .hero h1{font-size:4rem}
+  .event-copy{padding-inline:18px}
+  .event-meta span{display:none}
+  .event-meta{max-width:210px}
+  .mobile-nav{padding-inline:6px}
+  .mobile-nav a{font-size:.75rem}
+  .seal{width:60px;height:60px}
+  .envelope-address{font-size:.875rem}
+}
+@media(max-width:700px) and (max-height:650px){
+  .envelope-content{padding-block:8px}
+  .envelope-paper{max-width:270px;margin-block:18px}
+  .envelope-content h1{font-size:2.7rem}
+  .envelope-content p{font-size:1.1rem}
+}

@@ -1,0 +1,25 @@
+.gifts{background:radial-gradient(ellipse at 50% 45%,#faf0d8,#f9f5e9 70%)}
+.gifts .scene-content{max-width:620px;padding:15px 0 5px}.wish-kicker{font-size:.6875rem;letter-spacing:.18em;color:#9e895b}
+.gifts h2{font-size:3.9rem;line-height:1.02;margin:17px 0 8px}.gifts h2 i{color:#7d8b63}
+.gift-stage.wish-stage{height:310px;width:350px;max-width:100%;margin:0 auto;perspective:1100px;overflow:visible;isolation:isolate}
+.wish-stage:after{content:'';position:absolute;bottom:18px;left:10%;right:10%;height:1px;background:linear-gradient(90deg,transparent,#b9b99099,transparent)}
+.wish-lantern.gift-box{position:absolute;width:132px;height:204px;bottom:32px;left:calc(50% - 66px);padding:0;z-index:5;border:0;background:transparent;filter:drop-shadow(0 0 18px #e1be7545);transform-style:preserve-3d;animation:lantern-hover 5s ease-in-out infinite;transform-origin:50% 70%}
+.wish-lantern img{width:100%;height:100%;object-fit:contain;pointer-events:none;position:relative;z-index:2}
+.lantern-flame{position:absolute;bottom:19%;left:calc(50% - 6px);height:17px;width:12px;border-radius:60% 40% 55% 45%;background:#ffd076;box-shadow:0 0 15px 8px #ffd07655;animation:flame-flicker 1.4s ease-in-out infinite;z-index:1}
+.lantern-halo{position:absolute;inset:35px 30px 0;background:radial-gradient(ellipse,#f3cd766b,transparent 65%);border-radius:50%;animation:lantern-glow 4s ease-in-out infinite}
+.wish-moon{position:absolute;top:15px;right:56px;width:28px;height:28px;border-radius:50%;box-shadow:6px 3px 0 #c2ab6e;rotate:-18deg;opacity:.65}
+.wish-orbit{position:absolute;left:15%;top:10px;width:70%;height:270px;border:1px solid #babf9c66;border-radius:50% 50% 5% 5%;transform:rotate(-8deg);z-index:-1}.orbit-two{transform:rotate(8deg);opacity:.5;inset:18px auto auto 13%;width:74%;height:260px}
+.wish-branch{position:absolute;bottom:-8px;width:185px;pointer-events:none;z-index:6;filter:drop-shadow(0 5px 5px #5461390b)}.branch-left{left:-45px;rotate:20deg}.branch-right{right:-45px;scale:-1 1;rotate:-5deg;width:145px;bottom:5px}
+.wish-sky{position:absolute;inset:0;pointer-events:none;z-index:4}.wish-star{position:absolute;width:3px;height:3px;border-radius:50%;background:#c0a368;animation:wish-twinkle 4s ease-in-out infinite}.wish-star:nth-child(3n){width:5px;height:5px;clip-path:polygon(50% 0,60% 40%,100% 50%,60% 60%,50% 100%,40% 60%,0 50%,40% 40%);border-radius:0}
+.wish-ripple{position:absolute;bottom:8px;left:25%;width:50%;height:22px;border:1px solid #c5bc9460;border-radius:50%;box-shadow:0 6px 0 -2px #c5bc941f;animation:ripple-breathe 5s ease-in-out infinite}
+.released-light{position:absolute;bottom:50px;width:17px;height:25px;border-radius:40% 40% 20% 20%;background:linear-gradient(#ecdba5,#f6d487);border:1px solid #b79c62;box-shadow:0 0 18px #eac27077}.released-light>span{position:absolute;width:3px;bottom:3px;height:5px;background:#fff1b8;left:6px;border-radius:50%}
+.gifts .gift-prompt{font-family:var(--serif);font-size:1.15rem;font-style:italic;color:#8e8e6b;margin:12px 0 0;line-height:1.5}
+.gifts .gift-message{padding-top:12px}.gifts .gift-message h3{font-size:2rem;margin:0 0 9px}.gifts .gift-message h3 i{color:#87936b}.gifts .gift-message p{font-size:1.05rem;line-height:1.5;margin:0 auto 10px;max-width:300px}.gifts .gift-message .text-button{font-size:.75rem;min-height:44px;padding:8px 0}
+.wish-released .wish-lantern{width:95px;height:150px;left:calc(50% - 47.5px);bottom:35px}.wish-released .wish-stage{height:230px}.wish-released .wish-orbit{height:205px}.wish-released .orbit-two{height:195px}.wish-released .lantern-halo{inset:10px 45px 0}.wish-released .wish-branch{width:145px}.wish-released .branch-right{width:115px}.wish-released .gift-prompt{font-size:1rem}
+@keyframes lantern-hover{0%,100%{transform:translateY(0) rotate(-3deg)}50%{transform:translateY(-10px) rotate(3deg)}}
+@keyframes lantern-glow{0%,100%{opacity:.55;scale:.9}50%{opacity:1;scale:1.08}}
+@keyframes flame-flicker{0%,100%{scale:1;opacity:.8}50%{scale:.8 1.15;opacity:1}}
+@keyframes wish-twinkle{0%,100%{opacity:.15;scale:.7}50%{opacity:.8;scale:1.2}}
+@keyframes ripple-breathe{0%,100%{scale:.9;opacity:.4}50%{scale:1.1;opacity:.8}}
+@media(max-width:700px){.gifts h2{font-size:3rem;margin-top:14px}.gift-stage.wish-stage{width:300px;height:290px}.wish-branch{width:155px;left:-20px}.branch-right{left:auto;right:-18px;width:120px}.wish-lantern.gift-box{height:190px;width:124px;left:calc(50% - 62px)}.gifts .gift-prompt{font-size:1.05rem;max-width:270px;margin-inline:auto}.wish-released .wish-stage{height:215px}.wish-released .wish-lantern{width:90px;height:145px;left:calc(50% - 45px)}.gifts .gift-message h3{font-size:1.9rem}.gifts .gift-message p{font-size:1rem}.wish-kicker{font-size:.625rem}}
+@media(prefers-reduced-motion:reduce){.wish-stage *{animation:none!important}.wish-stage .lantern-flame{box-shadow:0 0 15px #ffd07655}}

@@ -1,0 +1,5 @@
+# Wish lantern
+
+Generated using the built-in image generation tool. Project asset: assets/wish-lantern.png.
+
+Prompt: Use case: illustration-story. Asset type: transparent wedding invitation clipart. One exquisite floating sky lantern viewed straight on with slight three-quarter dimensionality, full lantern entirely visible and centered with generous transparent margin. A rounded elongated traditional paper sky lantern made of warm ivory translucent rice paper, delicate antique gold botanical filigree and tiny jasmine motifs painted on its surface, thin gold vertical ribs, elegant scalloped gold bottom rim, a small warm amber flame visible inside its open base illuminating the paper from within. Hand-painted refined gouache watercolor illustration, luxurious Indian royal garden wedding stationery style, realistic fine paper texture, subtle warm inner light, romantic and magical, no hard black outlines. No surroundings, no sky, no floor, no people, no lettering, no text, no watermark, truly transparent background.

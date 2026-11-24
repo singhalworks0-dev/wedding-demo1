@@ -1,0 +1,32 @@
+.envelope-screen{perspective:1200px;isolation:isolate}
+.envelope-content{position:relative;z-index:2;perspective:1100px}
+.envelope-paper{transform-style:preserve-3d;animation:letter-float 6s ease-in-out infinite;will-change:transform}
+.envelope-flap{z-index:2;clip-path:none!important;height:58%;bottom:auto;inset:0 0 auto;transform-style:preserve-3d;background:transparent!important;transform-origin:top center;transition:transform .85s cubic-bezier(.22,.7,.2,1)}
+.envelope-flap:before{content:'';position:absolute;inset:0;background:#eee6d1;clip-path:polygon(0 0,100% 0,50% 100%);backface-visibility:visible}
+.envelope-paper:before,.envelope-paper:after{pointer-events:none;z-index:3}
+.envelope-address,.envelope-flower{z-index:4;pointer-events:none}
+.seal{z-index:6;animation:seal-glow 4s ease-in-out infinite;overflow:hidden;transition:opacity .4s,scale .5s,filter .4s;transform-style:preserve-3d}
+.seal:after{content:'';position:absolute;inset:-60%;background:linear-gradient(110deg,transparent 35%,#fff4c484 49%,transparent 62%);transform:translateX(-100%);animation:seal-shine 5s ease-in-out infinite;pointer-events:none}
+.letter-insert{position:absolute;inset:12% 8% 20%;background:#fffaf0;border:1px solid #c5b990;z-index:1;display:flex;align-items:center;justify-content:center;flex-direction:column;gap:6px;box-shadow:0 0 0 5px #f7f0de,inset 0 0 0 5px #fbf6e8;opacity:0;pointer-events:none}
+.letter-insert span:first-child{font-family:var(--serif);font-style:italic;font-size:2rem;color:#66785b}.letter-insert span:last-child{font-size:.625rem;letter-spacing:.2em;color:#a28b54}
+.letter-botanical{position:absolute;z-index:0;pointer-events:none;width:75vw;max-width:650px;opacity:.27;transform-origin:bottom center;animation:letter-bloom 9s ease-in-out infinite}
+.letter-botanical-a{left:-28%;bottom:-8%;rotate:22deg}.letter-botanical-b{right:-32%;top:-8%;rotate:195deg;animation-delay:-4s}
+.letter-spark{position:absolute;width:4px;height:4px;background:#c9ac67;border-radius:50%;pointer-events:none;z-index:1;animation:letter-sparkle var(--duration,5s) ease-in-out infinite;animation-delay:var(--delay,0s)}
+.envelope-content>.eyebrow{animation:letter-copy-in 1.2s .1s both}.envelope-content>h1{animation:letter-copy-in 1.2s .55s both}.envelope-content>p{animation:letter-copy-in 1.2s .8s both}.envelope-content>.text-button{animation:letter-copy-in 1.2s 1s both}.envelope-content>.skip-button{animation:letter-copy-in 1.2s 1.15s both}
+.envelope-flower{transform-origin:bottom center;animation:letter-flower-sway 7s ease-in-out infinite}
+.opening .envelope-paper{animation:none;transition:none}
+.opening .seal{animation:none;scale:1.15;opacity:0;pointer-events:none}
+.opening .seal:after{animation:none}
+.opening .envelope-flap{transform:rotateX(175deg);transition-delay:.22s}
+.opening .letter-insert{animation:letter-pull 1.1s .5s cubic-bezier(.2,.7,.2,1) forwards}
+.opening .envelope-content>.text-button,.opening .envelope-content>.skip-button{pointer-events:none}
+.envelope-screen.opened *{animation-play-state:paused!important}
+@keyframes letter-float{0%,100%{transform:translateY(0) rotateX(2deg) rotateY(-3deg)}50%{transform:translateY(-10px) rotateX(-2deg) rotateY(3deg)}}
+@keyframes seal-glow{0%,100%{box-shadow:2px 5px 9px #4b3c3b38,0 0 0 0 #c5a76c00}50%{box-shadow:2px 5px 12px #4b3c3b38,0 0 22px 3px #c5a76c44}}
+@keyframes seal-shine{0%,45%{transform:translateX(-100%)}75%,100%{transform:translateX(100%)}}
+@keyframes letter-bloom{0%,100%{transform:rotate(-2deg) translateY(0)}50%{transform:rotate(2deg) translateY(-10px)}}
+@keyframes letter-flower-sway{0%,100%{transform:rotate(-20deg)}50%{transform:rotate(-14deg)}}
+@keyframes letter-sparkle{0%,100%{opacity:0;transform:translateY(10px) scale(.4)}50%{opacity:.65;transform:translateY(-16px) scale(1)}}
+@keyframes letter-copy-in{from{opacity:0;translate:0 12px}to{opacity:1;translate:0 0}}
+@keyframes letter-pull{0%{opacity:0;transform:translateY(0)}25%{opacity:1}100%{opacity:1;transform:translateY(-58%) translateZ(30px) rotate(-2deg)}}
+@media(prefers-reduced-motion:reduce){.envelope-screen *{animation:none!important;transition:none!important}.letter-spark{display:none}.envelope-paper{transform:none}.opening .letter-insert{display:none}}

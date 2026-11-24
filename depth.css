@@ -1,0 +1,23 @@
+/* Perspective lives outside the fitted invitation canvas. */
+main{perspective:1400px}
+.invitation-scene{perspective:1200px}
+.scene-content{transform:scale(var(--scene-scale,1)) rotateX(var(--tilt-x,0deg)) rotateY(var(--tilt-y,0deg));transform-style:preserve-3d;transition:transform .65s cubic-bezier(.2,.7,.2,1)}
+.story-copy,.schedule-list,.outfit-stage,.destination-theatre,.gift-stage,.rsvp-inner{transform-style:preserve-3d;perspective:1000px}
+.story-copy>*,.outfit-copy,.travel-copy{position:relative}
+.outfit-halo{box-shadow:inset 0 -20px 35px #b2b69312,0 15px 30px #3b51300a}
+.fashion-figures{translate:0 0 22px}.outfit-flowers{translate:0 0 45px}.outfit-sparkle{translate:0 0 55px}
+.destination-theatre{box-shadow:0 15px 30px #2a40221c}
+.gift-box{transform-style:preserve-3d;perspective:800px}
+.gift-base{box-shadow:8px 5px 0 #8f9f79,9px 6px 0 #81916b}
+.gift-lid{translate:0 0 15px}.gift-heart{translate:0 0 30px}
+.rsvp-inner{box-shadow:0 12px 35px #3e512410,0 0 0 7px #eeefdf,0 0 0 8px #c7ccb6}
+.opening-panel{position:absolute;top:0;bottom:0;width:50%;z-index:12;pointer-events:none;backface-visibility:hidden;background-color:#edf0df;background-image:linear-gradient(#edf0dfad,#f9f5e9c9),url('assets/garden-flowers.png');background-size:cover;background-position:center;border:1px solid #b5bd9e;box-shadow:inset 0 0 0 7px #edf0df,inset 0 0 0 8px #c8cbb6;display:grid;place-items:center;transform-style:preserve-3d}
+.opening-panel:after{content:'a & m';font-family:var(--serif);font-style:italic;color:#8c956f;font-size:2rem;writing-mode:vertical-rl;letter-spacing:.12em}
+.opening-panel-left{left:0;transform-origin:left center;border-radius:2px 0 0 2px}
+.opening-panel-right{right:0;transform-origin:right center;background-position:right;border-radius:0 2px 2px 0}
+.opening-panel-right:after{content:'forever';font-size:1.4rem}
+.rsvp-fold-cover{position:absolute;inset:-1px;z-index:12;pointer-events:none;backface-visibility:hidden;transform-origin:top center;display:flex;align-items:center;justify-content:center;flex-direction:column;gap:18px;background:linear-gradient(#eef0e4d9,#eef0e4e8),url('assets/garden-flowers.png') center/cover;border:1px solid #acb695;box-shadow:inset 0 0 0 9px #edf0df,inset 0 0 0 10px #c1c9ae}
+.rsvp-fold-cover span:first-child{font-family:var(--serif);font-size:2.8rem;font-style:italic;color:#637655}.rsvp-fold-cover span:last-child{font-size:.6875rem;letter-spacing:.2em;color:#9b8656}
+#depth-atmosphere{position:fixed;inset:58px 0 calc(78px + env(safe-area-inset-bottom));width:100%;height:calc(100% - 136px - env(safe-area-inset-bottom));pointer-events:none;z-index:7;opacity:.65}
+body:has(.envelope-screen:not(.opened)) #depth-atmosphere{visibility:hidden}
+@media(prefers-reduced-motion:reduce){.scene-content{transform:scale(var(--scene-scale,1))!important;transition:none!important}.opening-panel,.rsvp-fold-cover,#depth-atmosphere{display:none!important}}

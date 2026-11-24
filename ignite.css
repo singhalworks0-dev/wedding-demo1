@@ -1,0 +1,39 @@
+#gifts.gifts{background:#15251f;isolation:isolate;transition:background 2.8s ease}
+#gifts .scene-content{width:100%!important;max-width:none!important;height:100%;padding:0!important;transform:none!important;isolation:isolate}
+#gifts .light-dawn{position:absolute;inset:0;background:radial-gradient(ellipse at 50% 40%,#fff4c5 0%,#f7ecd4 46%,#e5e4ce 100%);opacity:0;transition:opacity 2.8s ease;pointer-events:none;z-index:-2}
+#gifts .gift-stage.wish-stage{position:absolute;top:43%;left:50%;translate:-50% -50%;width:min(100%,360px);height:380px;margin:0;perspective:1100px;isolation:isolate}
+#gifts .wish-stage:after{display:none}
+#gifts .wish-lantern.gift-box{width:230px;height:330px;left:calc(50% - 115px);bottom:25px;animation:none;filter:drop-shadow(0 10px 24px #00000024);transition:filter 2s ease;transform-style:preserve-3d;will-change:transform}
+#gifts .wish-lantern img{filter:brightness(.55) saturate(.45);transition:filter 2.2s ease;transform:translateZ(22px)}
+#gifts .lantern-flame{bottom:16%;width:12px;height:20px;opacity:0;filter:blur(2px);transition:opacity .7s;z-index:3;background:#fff3bb;box-shadow:0 0 20px 10px #ffd87a99;animation:flame-flicker 1.4s infinite}
+#gifts .light-aura{position:absolute;inset:-30px -70px;background:radial-gradient(ellipse,#ffdf8d80,transparent 62%);opacity:0;scale:.5;transition:opacity 2s,scale 3s;pointer-events:none;z-index:-1}
+#gifts .light-ring{position:absolute;top:50%;left:50%;width:150px;height:150px;border:1px solid #f5d991aa;box-shadow:0 0 50px #f2cf7a50,inset 0 0 50px #f2cf7a40;border-radius:50%;translate:-50% -50%;opacity:0;pointer-events:none}
+#gifts .light-reflection{position:absolute;bottom:1px;left:calc(50% - 65px);width:130px;height:18px;background:radial-gradient(ellipse,#e4bd6b88,transparent 70%);opacity:0;scale:.7;transition:opacity 2.5s,scale 2.5s;filter:blur(7px)}
+#gifts .light-rays{position:absolute;inset:-40%;background:repeating-conic-gradient(from 5deg at 50% 50%,transparent 0deg 12deg,#f9e9b80d 14deg 19deg,transparent 22deg 34deg);opacity:0;transition:opacity 3s;pointer-events:none;z-index:-1;mask-image:radial-gradient(ellipse,transparent 0%,#000 35%,transparent 68%)}
+#gifts .light-dust{position:absolute;inset:0;width:100%;height:100%;pointer-events:none;z-index:3}
+#gifts .gift-prompt{position:absolute;left:24px;right:24px;top:calc(43% + 200px);margin:0;max-width:none;font-family:var(--serif);font-size:1.5rem;line-height:1.4;font-style:italic;color:#d8d6bd;opacity:1;transition:opacity .5s}
+#gifts .gift-message{position:absolute;top:calc(43% + 180px);left:24px;right:24px;padding:0;z-index:5;opacity:0;translate:0 16px;transition:opacity 1.2s,translate 1.2s}
+#gifts .gift-message[hidden]{display:none}
+#gifts .gift-message h2{font-size:2.8rem;margin:0 0 10px;line-height:1.1;color:#344b36}
+#gifts .gift-message h2 i{color:#8d9066}
+#gifts .gift-message p{font-family:var(--serif);font-size:1.2rem;line-height:1.5;margin:0;color:#7d836a}
+#gifts .gift-message .text-button{display:inline-block;min-height:44px;margin-top:12px;font-size:.6875rem;letter-spacing:.15em;color:#4b5b3c}
+#gifts.is-lit .light-dawn{opacity:1}
+#gifts.is-lit .light-aura{opacity:1;scale:1.6}
+#gifts.is-lit .wish-lantern{filter:drop-shadow(0 0 30px #ffd07a66)}
+#gifts.is-lit .wish-lantern img{filter:brightness(1.14) saturate(1.08)}
+#gifts.is-lit .lantern-flame{opacity:.85}
+#gifts.is-lit .light-rays{opacity:.9}
+#gifts.is-lit .light-reflection{opacity:.8;scale:1.4}
+#gifts.is-lit .gift-prompt{opacity:0;pointer-events:none}
+#gifts.message-visible .gift-message{opacity:1;translate:0 0}
+body:has(#gifts.current-scene:not(.is-lit)) header,body:has(#gifts.current-scene:not(.is-lit)) .scene-controls{background:#15251f!important;color:#eee7d1;border-color:#68795b33}
+body:has(#gifts.current-scene:not(.is-lit)) #scene-progress,body:has(#gifts.current-scene:not(.is-lit)) .scene-tap-hint{color:#aeb89d}
+body:has(#gifts.current-scene:not(.is-lit)) .sound-toggle{background:#1e3328;color:#ded8b9;border-color:#8c936044}
+body:has(#gifts.current-scene) header,body:has(#gifts.current-scene) .scene-controls,body:has(#gifts.current-scene) .sound-toggle{transition:background 2.8s,color 2.8s}
+body:has(#gifts.current-scene:not(.is-lit)) #depth-atmosphere{visibility:hidden}
+body:has(#gifts.current-scene.is-lit) header,body:has(#gifts.current-scene.is-lit) .scene-controls{background:#ecebd8!important;color:#344b36}
+body:has(#gifts.current-scene.is-lit) .sound-toggle{background:#f6edda;color:#344b36}
+@media(max-width:700px){#gifts .gift-stage.wish-stage{top:40%;height:350px;width:320px}#gifts .wish-lantern.gift-box{width:215px;height:315px;left:calc(50% - 107.5px);bottom:10px}#gifts .gift-prompt{top:calc(40% + 190px);font-size:1.4rem}#gifts .gift-message{top:calc(40% + 185px)}#gifts .gift-message h2{font-size:2.6rem}#gifts .gift-message p{font-size:1.15rem}}
+@media(max-height:700px){#gifts .gift-stage.wish-stage{height:280px;top:35%}#gifts .wish-lantern.gift-box{width:175px;height:260px;left:calc(50% - 87.5px)}#gifts .gift-prompt{top:calc(35% + 153px);font-size:1.2rem}#gifts .gift-message{top:calc(35% + 150px)}#gifts .gift-message h2{font-size:2.2rem}#gifts .gift-message p{font-size:1rem}#gifts .gift-message .text-button{margin-top:4px}}
+@media(prefers-reduced-motion:reduce){#gifts *,#gifts{animation:none!important;transition:none!important}.light-dust{display:none}}

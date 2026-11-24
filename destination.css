@@ -1,0 +1,40 @@
+/* The destination fills the invitation canvas; the curtains reveal the space. */
+#details.travel{background:#14261e;isolation:isolate}
+#details.travel .scene-content{width:100%!important;max-width:none!important;height:100%;padding:0!important;transform:none!important;perspective:none}
+#details .destination-theatre{position:absolute;inset:0;width:100%!important;height:100%!important;max-width:none;margin:0!important;border:0;outline:0;outline-offset:0;box-shadow:none;border-radius:0;isolation:isolate;overflow:hidden;perspective:1600px}
+#details .destination-art{inset:-1%;background-image:linear-gradient(180deg,#14251c55 0%,#14251c00 32%,#101f16a8 64%,#101f17f5 100%),url('assets/jaipur-destination.jpg');background-position:center,53% 45%;background-size:cover;justify-content:flex-start;padding:85px 20px 0;transition:scale 5s ease-out;scale:1.07}
+#details .curtains-open .destination-art{scale:1}
+#details .destination-city{font-size:clamp(4rem,11vw,6rem);font-style:normal;letter-spacing:-.035em;color:#fff6df;text-shadow:0 2px 20px #17281a77}
+#details .destination-subtitle{font-size:.6875rem;color:#eadab4;letter-spacing:.3em;margin-top:13px}
+#details h2{position:absolute;z-index:5;top:25px;left:0;right:0;margin:0;font-family:var(--sans);font-size:.6875rem;letter-spacing:.25em;text-transform:uppercase;color:#f3e7cf;text-align:center}
+#details h2 i{font-style:normal;color:inherit}
+#details .travel-copy{position:absolute;z-index:5;bottom:28px;left:50%;translate:-50% 0;width:calc(100% - 82px);max-width:470px;color:#fff6e2;text-align:center}
+#details .travel-copy h3{font-size:2.2rem;margin:0 0 16px;color:#fff6e2;text-shadow:0 1px 15px #12231680}
+#details .travel-copy .outline-button{color:#fff6e2;border:1px solid #d7c4969c;background:#f8f0db10;backdrop-filter:blur(8px);width:auto;min-width:240px;font-size:.875rem;min-height:50px;padding:12px 20px;gap:20px}
+#details .travel-copy .outline-button:hover{background:#f8f0db25}
+#details .travel-notes{border-top:1px solid #dfd0a74d;margin-top:22px;padding-top:18px;gap:24px;max-width:440px}
+#details .travel-notes .eyebrow{color:#d4be89;font-size:.625rem;letter-spacing:.14em}
+#details .travel-notes p{font-size:.8125rem;line-height:1.6;color:#eeeadb;margin:7px 0 0}
+#details .mock-caption{font-size:.625rem;color:#ceccb7;margin-top:16px}
+#details .curtain{z-index:15;width:52%;top:-5px;bottom:-10px;background-image:linear-gradient(90deg,#081d1470,transparent 50%,#07160d66),url('assets/emerald-curtain.png');background-size:cover;background-position:center;border-bottom:0;box-shadow:15px 0 35px #06140c80;transition:transform 2.5s cubic-bezier(.2,.65,.2,1),border-radius 2.5s;will-change:transform}
+#details .curtain-left{left:-1%;border-right:2px solid #bca064;transform-origin:top left}
+#details .curtain-right{right:-1%;border-left:2px solid #bca064;transform-origin:top right;background-position:65% center;box-shadow:-15px 0 35px #06140c80}
+#details .curtains-open .curtain-left{transform:translateX(-88%) rotateZ(1.5deg);border-radius:0 0 100% 0}
+#details .curtains-open .curtain-right{transform:translateX(88%) rotateZ(-1.5deg);border-radius:0 0 0 100%}
+#details .curtain:after{content:'';position:absolute;bottom:31%;left:0;right:0;height:12px;background:repeating-linear-gradient(35deg,#b2995c 0 2px,#d9c58f 2px 4px,#927442 4px 6px);border-radius:50%;box-shadow:0 5px 6px #0f2117a6;opacity:0;transition:opacity 1.8s .3s}
+#details .curtains-open .curtain:after{opacity:1}
+#details .curtain-pelmet{z-index:18;height:29px;left:-4px;right:-4px;border-radius:0 0 50% 50%;background:linear-gradient(#0f291c40,#0f291c75),url('assets/emerald-curtain.png') center 30%/100% auto;border-bottom:2px solid #baa068;box-shadow:0 8px 20px #0c20164d}
+#details .curtain-replay{z-index:20;inset:46% 15% auto;font-family:var(--serif);font-size:1.3rem;font-style:italic;background:transparent;border:1px solid #c8ad6a88;color:#e3cf9a;backdrop-filter:blur(3px);padding:12px;transition:opacity .4s}
+#details .curtains-open .curtain-replay{inset:auto auto 12px 14px;min-height:30px;padding:4px 6px;border:0;font-family:var(--sans);font-size:.625rem;background:transparent;opacity:.7}
+#details .curtains-open .curtain-replay:hover{opacity:1}
+.destination-credit{position:absolute;z-index:5;right:14px;bottom:17px;color:#d3d3bd;font-size:.5625rem;letter-spacing:.02em}
+body:has(#details.current-scene) header{background:#12251b!important;color:#f8ecd3}
+body:has(#details.current-scene) .scene-controls{background:#112219;color:#f8ecd3;border-color:#c5b27b40}
+body:has(#details.current-scene) .scene-tap-hint,body:has(#details.current-scene) #scene-progress{color:#c7c4a9}
+body:has(#details.current-scene) .sound-toggle{background:#1b3226e8;border-color:#ab9b6f77;color:#e8d9b7}
+@media(max-width:700px){#details .destination-art{padding-top:80px;background-position:center,52% 45%}#details .destination-city{font-size:4.6rem}#details .travel-copy{bottom:48px;width:calc(100% - 64px)}#details .travel-copy h3{font-size:1.9rem;margin-bottom:15px}#details .travel-notes{gap:14px;margin-top:20px;padding-top:16px}#details .travel-notes .eyebrow{font-size:.625rem}#details .travel-notes p{font-size:.75rem;line-height:1.6}#details .travel-copy .outline-button{width:100%;min-width:0;max-width:300px;font-size:.8125rem}#details .curtain-pelmet{height:24px}#details h2{top:36px;font-size:.625rem}#details .destination-subtitle{font-size:.625rem}#details .mock-caption{margin-top:12px;font-size:.5625rem}.destination-credit{font-size:.5rem}}
+@media(max-height:650px){#details .destination-art{padding-top:55px}#details .destination-city{font-size:3.4rem}#details h2{top:27px}#details .travel-copy{bottom:38px}#details .travel-copy h3{font-size:1.6rem;margin-bottom:10px}#details .travel-notes{margin-top:12px;padding-top:10px}#details .travel-notes p{margin-top:3px}#details .mock-caption{margin-top:8px}}
+@media(prefers-reduced-motion:reduce){#details .curtain,#details .destination-art{transition:none!important}#details .destination-art{scale:1}}
+
+#details .destination-theatre:not(.curtains-open) .curtain-replay{opacity:0}#details .destination-theatre:not(.curtains-open) .curtain-replay:focus-visible{opacity:1}
+
